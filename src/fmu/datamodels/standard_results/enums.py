@@ -21,7 +21,6 @@ class StandardResultName(StrEnum):
     field_outline = "field_outline"
     inplace_volumes = "inplace_volumes"
     simulator_fipregions_mapping = "simulator_fipregions_mapping"
-    simulator_inplace_volumes = "simulator_inplace_volumes"
     simulator_zone_layer_mapping = "simulator_zone_layer_mapping"
     structure_depth_surface = "structure_depth_surface"
     structure_time_surface = "structure_time_surface"
@@ -43,6 +42,7 @@ class StandardResultName(StrEnum):
     pvt = "pvt"
     relperm = "relperm"
     rft = "rft"
+    simulator_inplace_volumes = "simulator_inplace_volumes"
     simulationtimeseries = "simulationtimeseries"
     transmissibilities = "transmissibilities"
     well_completions = "well_completions"
@@ -121,19 +121,11 @@ class InplaceVolumes:
         return InplaceVolumes.index_columns() + InplaceVolumes.value_columns()
 
 
-class FaultLines:
-    """Enumerations relevant to fault lines tables."""
+class FaultLines(IndexColumnsStrEnum):
+    """The index columns for a fault lines table."""
 
-    class TableIndexColumns(StrEnum):
-        """The index columns for a fault lines table."""
-
-        POLY_ID = "POLY_ID"
-        NAME = "NAME"
-
-    @staticmethod
-    def index_columns() -> list[str]:
-        """Returns a list of the index columns."""
-        return [k.value for k in FaultLines.TableIndexColumns]
+    POLY_ID = "POLY_ID"
+    NAME = "NAME"
 
 
 class ErtObservations:
@@ -183,35 +175,19 @@ class ModelStratigraphy:
         type = "type"
 
 
-class SimulatorFipregionsMapping:
-    """Enumerations relevant to simulator fipregions mapping tables."""
+class SimulatorFipregionsMapping(IndexColumnsStrEnum):
+    """The index columns for a simulator fipregions mapping table."""
 
-    class TableIndexColumns(StrEnum):
-        """The index columns for a simulator fipregions mapping table."""
-
-        FIPNUM = "FIPNUM"
-        ZONE = "ZONE"
-        REGION = "REGION"
-
-    @staticmethod
-    def index_columns() -> list[str]:
-        """Returns a list of the index columns."""
-        return [k.value for k in SimulatorFipregionsMapping.TableIndexColumns]
+    FIPNUM = "FIPNUM"
+    ZONE = "ZONE"
+    REGION = "REGION"
 
 
-class SimulatorZoneLayerMapping:
-    """Enumerations relevant to simulator zone layer mapping tables."""
+class SimulatorZoneLayerMapping(IndexColumnsStrEnum):
+    """The index columns for a simulator zone layer mapping table."""
 
-    class TableIndexColumns(StrEnum):
-        """The index columns for a simulator zone layer mapping table."""
-
-        LAYER = "LAYER"
-        ZONE = "ZONE"
-
-    @staticmethod
-    def index_columns() -> list[str]:
-        """Returns a list of the index columns."""
-        return [k.value for k in SimulatorZoneLayerMapping.TableIndexColumns]
+    LAYER = "LAYER"
+    ZONE = "ZONE"
 
 
 class SimulatorTables:
